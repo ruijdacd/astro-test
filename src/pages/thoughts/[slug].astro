@@ -1,0 +1,17 @@
+---
+
+import BaseLayout from "../layouts/base.astro"
+
+import { Heading } from "../components/heading.tsx"
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "foo" } }
+  ]
+}
+
+---
+
+<BaseLayout>
+	<Heading as="h1">Thoughts</Heading>
+</BaseLayout>
