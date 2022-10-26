@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   }
 }

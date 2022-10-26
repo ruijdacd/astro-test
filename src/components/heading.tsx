@@ -1,25 +1,20 @@
-import { Component, JSX } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
+import { Component, JSX } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
-import { composeClasses } from '../utils/classes';
-
-import * as styles from './heading.css';
+import * as styles from "./heading.css";
 
 export type HeadingProps = {
   as: keyof JSX.IntrinsicElements;
+  size: keyof typeof styles.size;
 };
 
-export const Heading: Component = ({ children, ...props }) => {
+export const Heading: Component<HeadingProps> = (props) => {
   return (
     <Dynamic
       component={props.as}
-      class={composeClasses(
-        styles.heading({
-          size: 'large',
-        })
-      )}
+      class={[styles.root, styles.size[props.size]].join(" ")}
     >
-      {children}
+      {props.children}
     </Dynamic>
   );
 };

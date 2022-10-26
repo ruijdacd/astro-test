@@ -1,26 +1,22 @@
 ---
+import { lightTheme } from "../styles/theme.css";
 
-import { getCssText } from "../stitches.config.ts";
+import { Header } from "../components/header";
 
-import { globalStyles } from "../styles/global.ts";
-
-import { Header } from "../components/header.tsx";
-
-globalStyles()
-
+import "../styles/global.css";
 ---
 
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<style id="stitches" is:inline set:html={getCssText()}></style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<slot />
-		</main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+
+  <body class={lightTheme}>
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>

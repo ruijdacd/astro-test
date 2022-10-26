@@ -1,14 +1,13 @@
-import { css } from '../stitches.config';
+import { style } from "@vanilla-extract/css";
 
-export const header = css({
-  padding: 16,
-  display: 'grid',
-  gridAutoFlow: 'row',
-  placeItems: 'center',
-  gap: 16,
+export const root = style({
+  padding: "1rem",
+  display: "grid",
+  gridAutoFlow: "row",
+  placeItems: "center",
+  gap: "1rem",
 });
-
-export const nav = css({
-  display: 'flex',
-  gap: 16,
+export const nav = style({
+  display: "flex",
+  gap: "1rem",
 });

@@ -1,0 +1,35 @@
+---
+import { getThoughts } from "../../lib/thoughts.ts";
+
+import BaseLayout from "../../layouts/base.astro";
+
+import { Heading } from "../../components/heading";
+import { ThoughtCard } from "../../components/thought-card.tsx";
+import { Pagination } from "../../components/pagination.tsx";
+
+export async function getStaticPaths({ paginate }) {
+  const thoughts = await getThoughts();
+
+  return paginate(thoughts, {
+    pageSize: 12,
+  });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout>
+  <Heading as="h1" size="large">Thoughts</Heading>
+
+  <ul>
+    {
+      page.data.map((thought) => (
+        <li>
+          <ThoughtCard thought={thought} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <Pagination page={page} />
+</BaseLayout>

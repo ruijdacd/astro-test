@@ -1,0 +1,26 @@
+---
+import { getThoughts } from "../../lib/thoughts.ts";
+
+import BaseLayout from "../../layouts/base.astro";
+
+import { Heading } from "../../components/heading";
+
+export async function getStaticPaths() {
+  const thoughts = await getThoughts();
+
+  return thoughts.map((thought) => ({
+    params: { slug: thought.uid },
+    props: {
+      thought,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const { thought } = Astro.props;
+---
+
+<BaseLayout>
+  <Heading as="h1" size="large">{thought.title}</Heading>
+  <img src={thought.image.url} alt={thought.image.alt} width={480} />
+</BaseLayout>

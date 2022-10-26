@@ -1,16 +1,14 @@
-import { Component } from 'solid-js';
+import { Component } from "solid-js";
 
-import { composeClasses } from '../utils/classes';
-
-import * as styles from './header.css';
+import * as styles from "./header.css";
 
 export const Header: Component = () => {
   return (
-    <header class={composeClasses(styles.header())}>
+    <header class={styles.root}>
       <a href="/">Logo</a>
 
       <nav>
-        <ul class={composeClasses(styles.nav())}>
+        <ul class={styles.nav}>
           <li>
             <a href="/">Home</a>
           </li>
@@ -18,7 +16,7 @@ export const Header: Component = () => {
             <a href="/thoughts">Thoughts</a>
           </li>
           <li>
-            <a href="/cooking">Cooking</a>
+            <a href="/cookings">Cookings</a>
           </li>
           <li>
             <a href="/eco-life">Eco life</a>

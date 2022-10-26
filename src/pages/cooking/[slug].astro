@@ -1,0 +1,27 @@
+---
+import { getCookings } from "../../lib/cookings.ts";
+
+import BaseLayout from "../../layouts/base.astro";
+
+import { Heading } from "../../components/heading";
+
+export async function getStaticPaths() {
+  const cookings = await getCookings();
+
+  return cookings.map((cooking) => ({
+    params: { slug: cooking.uid },
+    props: {
+      cooking,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const { cooking } = Astro.props;
+---
+
+<BaseLayout>
+  <Heading as="h1" size="large">{cooking.title}</Heading>
+  <div>Difficulty: {cooking.difficulty}</div>
+  <div>Duration: {cooking.duration} minutes</div>
+</BaseLayout>
